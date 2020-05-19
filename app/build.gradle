@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+// Apply the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'
+// Apply the Performance Monitoring plugin
+apply plugin: 'com.google.firebase.firebase-perf'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.manju_exports"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        // English stringresources and xxhdpi screen-density resources.
+        resConfigs "en"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment:2.2.2'
+    implementation 'androidx.navigation:navigation-ui:2.2.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.google.android.material:material:1.1.0'
+    //For Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.7.1"
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+
+    // rxandroid
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.7.1'
+
+
+    //Currently Working Shimmer Effect
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+    implementation 'com.android.volley:volley:1.1.1'
+    //This is for QRCode Scanning
+    implementation 'com.google.android.gms:play-services-vision:20.0.0'
+
+    //This is for runtime permission
+    implementation 'pub.devrel:easypermissions:0.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //This is for firebase crashlytics
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
+    implementation 'com.android.support:multidex:1.0.3'
+
+    // Add the Firebase Crashlytics SDK.
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0'
+
+    // Add the dependency for the Performance Monitoring library
+    implementation 'com.google.firebase:firebase-perf:19.0.7'
+
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.13'
+    implementation 'com.karumi:dexter:5.0.0'
+}

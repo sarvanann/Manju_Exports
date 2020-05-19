@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "537959947742",
+    "firebase_url": "https://manju-exports.firebaseio.com",
+    "project_id": "manju-exports",
+    "storage_bucket": "manju-exports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537959947742:android:7b2922c182f6e941c4114f",
+        "android_client_info": {
+          "package_name": "com.manju_exports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537959947742-f0sabie65movt4skhgu95un8agjph69t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.manju_exports",
+            "certificate_hash": "eeead8b036ea6fb3395acc93f56bb26997ab3e7a"
+          }
+        },
+        {
+          "client_id": "537959947742-ev857lbtn6la2ts5ie9dlveen598j0l2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxb5rkUpQ1HEzHzyvpPLvbjp8lzFJ48EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537959947742-ev857lbtn6la2ts5ie9dlveen598j0l2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

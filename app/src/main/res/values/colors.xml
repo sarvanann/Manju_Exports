@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="hint_color">#707070</color>
+    <color name="hint_color_grey">#B6B6B6</color>
+    <color name="black_color">#000000</color>
+    <color name="white_color">#ffffff</color>
+    <color name="blue_color">#1374F3</color>
+    <color name="red_color_new">#FD0000</color>
+    <color name="cancel_color">#F31347</color>
+    <color name="new_dash_bg_color">#F5F5F5</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="orange_color">#F3A113</color>
+    <color name="green_color">#08C40E</color>
+    <color name="pink_color">#F313F3</color>
+    <color name="purple_color">#CE13CE</color>
+    <color name="light_red_color">#F95C5C</color>
+
+</resources>

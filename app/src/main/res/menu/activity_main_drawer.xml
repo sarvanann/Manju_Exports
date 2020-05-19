@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sewing"
+            android:icon="@drawable/sewing_for_blue"
+            android:title="@string/sewing_txt"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/nav_checking"
+            android:icon="@drawable/tick_mark_for_blue"
+            android:title="@string/checking_txt"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/nav_rechecking"
+            android:icon="@drawable/double_tick_mark_for_blue"
+            android:title="@string/rechecking_txt"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/nav_ironing"
+            android:icon="@drawable/ironing_machine_for_blue"
+            android:title="@string/ironing_txt"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/nav_packing"
+            android:icon="@drawable/ironing_machine_for_blue"
+            android:title="@string/packing_txt"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/logout_txt"
+            app:showAsAction="always" />
+    </group>
+</menu>
