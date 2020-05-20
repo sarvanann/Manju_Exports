@@ -212,7 +212,7 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
 
 //        Log.e("str_session_username_rechecking", str_session_username);
 //        Log.e("str_session_logintoken_rechecking", str_session_logintoken);
-//        Log.e("str_session_io_number_rechecking", str_session_io_number);
+        Log.e("str_session_io_number_rechecking", str_session_io_number);
 //        Log.e("str_session_color_pick_rechecking", str_session_color_pick);
 //
 //        Log.e("str_session_checking_person_rechecking", str_session_checking_person);
@@ -287,12 +287,29 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
         if (!(str_session_io_number_manual_entry.equalsIgnoreCase("No data"))) {
             tv_onclick_io_number_txt.setText(str_session_io_number_manual_entry);
             tv_io_number_normal_txt.setText("");
+            Log.e("str_session_io_number_manual_entry", str_session_io_number_manual_entry);
         } else {
             tv_io_number_normal_txt.setText(R.string.io_number_txt);
         }
 
         if (!(str_session_color_pick_manual_entry.equalsIgnoreCase("No data"))) {
             tv_onclick_color_txt.setText(str_session_color_pick_manual_entry);
+            tv_color_normal_txt.setText("");
+        } else {
+            tv_color_normal_txt.setText(R.string.color_txt);
+        }
+
+
+        /*This is for input value 1*/
+        if (!(str_session_io_number.equalsIgnoreCase("No data"))) {
+            tv_onclick_io_number_txt.setText(str_session_io_number);
+            tv_io_number_normal_txt.setText("");
+        } else {
+            tv_io_number_normal_txt.setText(R.string.io_number_txt);
+        }
+
+        if (!(str_session_color_pick.equalsIgnoreCase("No data"))) {
+            tv_onclick_color_txt.setText(str_session_color_pick);
             tv_color_normal_txt.setText("");
         } else {
             tv_color_normal_txt.setText(R.string.color_txt);
@@ -660,7 +677,7 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
                     @Override
                     public void onClick(View v) {
                         int_fab_onlick_value = 2;
-                        SessionSave.SaveSession("Game_Entry_Point_Value_For_ReChecking", "2", getActivity());
+                        SessionSave.SaveSession("Game_Entry_Point_Value_For_ReChecking", String.valueOf(int_fab_onlick_value), getActivity());
                         dialog_fab.dismiss();
 
                         constraintLayout_qr_code_scan.setVisibility(View.VISIBLE);
@@ -1050,19 +1067,25 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
         color_adapter_for_rechecking = new Color_Adapter_For_ReChecking(getActivity(), color_ArrayList);
         rv_colors.setAdapter(color_adapter_for_rechecking);*/
 
+        Log.e("str_session_game_entry_point_value_loggg", str_session_game_entry_point_value);
+        Log.e("str_session_io_number_manual_entry̥_loggg", str_session_io_number_manual_entry);
+
         try {
             String str_io_number_local = "";
             if (str_session_game_entry_point_value.equals("1")) {
                 str_io_number_local = SessionSave.getSession("Session_IO_Number_Rechecking", getActivity());
             } else if (str_session_game_entry_point_value.equals("2")) {
-                str_io_number_local = SessionSave.getSession("Session_IO_Number_Rechecking_Manual_Entry", getActivity());
+//                str_io_number_local = SessionSave.getSession("Session_IO_Number_Rechecking_Manual_Entry", getActivity());
+                str_io_number_local = tv_onclick_io_number_txt.getText().toString();
+            } else {
+                str_io_number_local = tv_onclick_io_number_txt.getText().toString();
             }
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("usname", str_session_username);
             jsonObject.put("token", str_session_logintoken);
             jsonObject.put("io_no", str_io_number_local);
-//            Log.e("json_operation", jsonObject.toString());
+            Log.e("json_operation", jsonObject.toString());
             APIInterface apiInterface = Factory.getClient();
             Call<Operator_Model> call = apiInterface.COLOR_CODE_RESPONSE_CALL("application/json", jsonObject.toString());
             call.enqueue(new Callback<Operator_Model>() {
@@ -1232,6 +1255,7 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
                 @Override
                 public void onClick(View v) {
                     tv_io_number_normal_txt.setText("");
+                    tv_onclick_io_number_txt.setText("");
                     SessionSave.SaveSession("Session_IO_Number_Rechecking_Manual_Entry", holder.tv_io_number_pick.getText().toString(), getActivity());
                     tv_onclick_io_number_txt.setText(holder.tv_io_number_pick.getText().toString());
                     dialog_for_io_number.dismiss();
@@ -1403,10 +1427,6 @@ public class Re_Checking_Entry_Frag extends Fragment implements View.OnClickList
 
                     tv_onclick_shift.setText(holder.tv_from_shift_timing.getText().toString());
                     dialog_for_shift_timing.dismiss();
-//                    Log.e("onclick_io_number", tv_onclick_io_number_txt.getText().toString());
-//                    Log.e("onclick_color", tv_onclick_color_txt.getText().toString());
-//                    Log.e("onclick_checking_person", tv_onclick_rechecking_person_txt.getText().toString());
-//                    Log.e("onclick_shift_timing", tv_onclick_shift.getText().toString());
                     if (!(tv_onclick_io_number_txt.getText().toString().isEmpty())
                             && (!(tv_onclick_color_txt.getText().toString().isEmpty()))
                             && (!(tv_onclick_rechecking_person_txt.getText().toString().isEmpty())

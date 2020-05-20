@@ -14,7 +14,6 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    ̥
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"
@@ -28,10 +27,7 @@
         tools:targetApi="n">
         <activity android:name=".Next_Qr_code"></activity>
         <activity android:name=".QRCode_EDM_Youtube">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Testing_Act" />
         <activity
@@ -52,7 +48,10 @@
             android:name=".Splash_Act"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".Show_Layout_For_Rechecking"

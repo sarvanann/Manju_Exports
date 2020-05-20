@@ -1,10 +1,12 @@
 package com.manju_exports;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.Result;
+import com.manju_exports.Entries.Sewing_Entry_Act;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
@@ -16,12 +18,16 @@ public class Next_Qr_code extends AppCompatActivity implements ZXingScannerView.
         super.onCreate(savedInstanceState);
         zXingScannerView = new ZXingScannerView(this);
         setContentView(zXingScannerView);
+
     }
 
     @Override
     public void handleResult(Result rawResult) {
-        QRCode_EDM_Youtube.textView.setText(rawResult.getText());
-        onBackPressed();
+//        QRCode_EDM_Youtube.textView.setText(rawResult.getText());
+        Intent intent = new Intent(this, Sewing_Entry_Act.class);
+        intent.putExtra("Barcode_value", rawResult.getText());
+        startActivity(intent);
+//        onBackPressed();
     }
 
     @Override

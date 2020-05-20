@@ -209,7 +209,7 @@ public class Checking_Entry_Frag extends Fragment implements View.OnClickListene
 
 //        Log.e("str_session_username", str_session_username);
 //        Log.e("str_session_logintoken", str_session_logintoken);
-//        Log.e("str_session_io_number", str_session_io_number);
+        Log.e("str_session_io_number", str_session_io_number);
 //        Log.e("str_session_color_pick", str_session_color_pick);
 //
 //        Log.e("str_session_checking_person", str_session_checking_person);
@@ -228,7 +228,7 @@ public class Checking_Entry_Frag extends Fragment implements View.OnClickListene
             str_hide_layout_value = bundle.getString("hide_layout");
             str_qrcode_value = bundle.getString("Barcode_value");
             str_qrcode_value_others = bundle.getString("Barcode_value_Others");
-            Log.e("str_hide_layout_value_log", str_hide_layout_value);
+//            Log.e("str_hide_layout_value_log", str_hide_layout_value);
            /* Set<String> stringSet = new HashSet<>();
             stringSet.add(str_qrcode_value);
             JSONObject jsonObject = null;
@@ -292,6 +292,21 @@ public class Checking_Entry_Frag extends Fragment implements View.OnClickListene
 
         if (!(str_session_color_pick_manual_entry.equalsIgnoreCase("No data"))) {
             tv_onclick_color_txt.setText(str_session_color_pick_manual_entry);
+            tv_color_normal_txt.setText("");
+        } else {
+            tv_color_normal_txt.setText(R.string.color_txt);
+        }
+
+        /*This is for input value 1*/
+        if (!(str_session_io_number.equalsIgnoreCase("No data"))) {
+            tv_onclick_io_number_txt.setText(str_session_io_number);
+            tv_io_number_normal_txt.setText("");
+        } else {
+            tv_io_number_normal_txt.setText(R.string.io_number_txt);
+        }
+
+        if (!(str_session_color_pick.equalsIgnoreCase("No data"))) {
+            tv_onclick_color_txt.setText(str_session_color_pick);
             tv_color_normal_txt.setText("");
         } else {
             tv_color_normal_txt.setText(R.string.color_txt);
@@ -686,7 +701,6 @@ public class Checking_Entry_Frag extends Fragment implements View.OnClickListene
                         scroll_view_layout.setVisibility(View.VISIBLE);
                         btn_save_checking.setVisibility(View.VISIBLE);
                         fab_for_checking.setVisibility(View.GONE);
-
 //                        Log.e("Game_Entry_Point_Value_for_checking", SessionSave.getSession("Game_Entry_Point_Value_For_Checking", getActivity()));
                     }
                 });
@@ -1074,14 +1088,17 @@ public class Checking_Entry_Frag extends Fragment implements View.OnClickListene
             if (str_session_game_entry_point_value.equals("1")) {
                 str_io_number_local = SessionSave.getSession("Session_IO_Number", Objects.requireNonNull(getActivity()));
             } else if (str_session_game_entry_point_value.equals("2")) {
-                str_io_number_local = SessionSave.getSession("Session_IO_Number_Manual_Entry", Objects.requireNonNull(getActivity()));
+//                str_io_number_local = SessionSave.getSession("Session_IO_Number_Manual_Entry", Objects.requireNonNull(getActivity()));
+                str_io_number_local = tv_onclick_io_number_txt.getText().toString();
+            } else {
+                str_io_number_local = tv_onclick_io_number_txt.getText().toString();
             }
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("usname", str_session_username);
             jsonObject.put("token", str_session_logintoken);
             jsonObject.put("io_no", str_io_number_local);
-//            Log.e("json_operation", jsonObject.toString());
+            Log.e("json_operation", jsonObject.toString());
             APIInterface apiInterface = Factory.getClient();
             Call<Operator_Model> call = apiInterface.COLOR_CODE_RESPONSE_CALL("application/json", jsonObject.toString());
             call.enqueue(new Callback<Operator_Model>() {

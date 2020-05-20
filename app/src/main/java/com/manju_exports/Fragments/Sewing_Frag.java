@@ -52,6 +52,7 @@ import com.manju_exports.Interface.Factory;
 import com.manju_exports.Model.Full_App_Model_Class;
 import com.manju_exports.Model.Operator_Model;
 import com.manju_exports.Model.Sewing_Model;
+import com.manju_exports.Next_Qr_code;
 import com.manju_exports.R;
 import com.manju_exports.ScannedBarcodeActivity;
 import com.manju_exports.SessionSave;
@@ -308,7 +309,7 @@ public class Sewing_Frag extends Fragment implements View.OnClickListener {
         } else {
             str_qrcode_value = bundle.getString("Barcode_value");
             str_qrcode_value_others = bundle.getString("Barcode_value_Others");
-
+            Log.e("str_qrcode_value_log", str_qrcode_value);
             /*Set<String> stringSet = new HashSet<>();
             stringSet.add(str_qrcode_value);
             JSONObject jsonObject = null;
@@ -329,7 +330,7 @@ public class Sewing_Frag extends Fragment implements View.OnClickListener {
                 }
             }*/
             if (str_qrcode_value != null) {
-//                Get_Scan_Details();
+                Get_Scan_Details(str_qrcode_value);
                 rv_sewing.setVisibility(View.GONE);
                 constraintLayout_recyclerview.setVisibility(View.GONE);
                 constraintLayout_qr_code_scan.setVisibility(View.VISIBLE);
@@ -1069,12 +1070,12 @@ public class Sewing_Frag extends Fragment implements View.OnClickListener {
                         constraintLayout_qr_code_scan.setVisibility(View.GONE);
                         fab.setVisibility(View.GONE);
 
-                        /*Intent intent = new Intent(getActivity(), ScannedBarcodeActivity.class);
+                        Intent intent = new Intent(getActivity(), Next_Qr_code.class);
                         intent.putExtra("Entry_Point_Onclick_Value", "1");
-                        startActivity(intent);*/
+                        startActivity(intent);
 
-                        scanner_layout.setVisibility(View.VISIBLE);
-                        initialiseDetectorsAndSources();
+//                        scanner_layout.setVisibility(View.VISIBLE);
+//                        initialiseDetectorsAndSources();
                     }
                 });
                 tv_manual.setOnClickListener(new View.OnClickListener() {
@@ -1233,7 +1234,7 @@ public class Sewing_Frag extends Fragment implements View.OnClickListener {
 
                     rv_sewing.setVisibility(View.GONE);
                     constraintLayout_sewing_rv_layout.setVisibility(View.GONE);
-                    Get_Scan_Details(intentData);
+//                    Get_Scan_Details(intentData);
                 }
             }
         });

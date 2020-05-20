@@ -190,8 +190,8 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
         str_session_io_number = SessionSave.getSession("Session_IO_Number_Ironing", getActivity());
         str_session_color_pick = SessionSave.getSession("Session_Color_Pick_Ironing", getActivity());
 
-        str_session_io_number_manual_entry = SessionSave.getSession("Session_IO_Number_Manual_Entry", getActivity());
-        str_session_color_pick_manual_entry = SessionSave.getSession("Session_Color_Pick_Manual_Entry", getActivity());
+        str_session_io_number_manual_entry = SessionSave.getSession("Session_IO_Number_Manual_Entry_For_Ironing", getActivity());
+        str_session_color_pick_manual_entry = SessionSave.getSession("Session_Color_Pick_Manual_Entry_For_Ironing", getActivity());
 
         str_session_checking_person = SessionSave.getSession("Session_Checking_Person_Ironing", getActivity());
         str_session_shift_timing = SessionSave.getSession("Session_Shift_Timing_Ironing", getActivity());
@@ -269,6 +269,22 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
 //        Log.e("str_session_color_pick_manual_entry", str_session_color_pick_manual_entry);
         if (!(str_session_color_pick_manual_entry.equalsIgnoreCase("No data"))) {
             tv_onclick_color_txt.setText(str_session_color_pick_manual_entry);
+            tv_color_normal_txt.setText("");
+        } else {
+            tv_color_normal_txt.setText(R.string.color_txt);
+        }
+
+
+        /*This is for input value 1*/
+        if (!(str_session_io_number.equalsIgnoreCase("No data"))) {
+            tv_onclick_io_number_txt.setText(str_session_io_number);
+            tv_io_number_normal_txt.setText("");
+        } else {
+            tv_io_number_normal_txt.setText(R.string.io_number_txt);
+        }
+
+        if (!(str_session_color_pick.equalsIgnoreCase("No data"))) {
+            tv_onclick_color_txt.setText(str_session_color_pick);
             tv_color_normal_txt.setText("");
         } else {
             tv_color_normal_txt.setText(R.string.color_txt);
@@ -735,10 +751,10 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
 //        Log.e("str_temp_entry_point_btn_ironing", str_temp_entry_point);
         try {
             String str_io_num = SessionSave.getSession("Session_IO_Number_Ironing", getActivity());
-            String str_io_num_for_manual_entry = SessionSave.getSession("Session_IO_Number_Manual_Entry", getActivity());
+            String str_io_num_for_manual_entry = SessionSave.getSession("Session_IO_Number_Manual_Entry_For_Ironing", getActivity());
 
             String str_color_pick = SessionSave.getSession("Session_Color_Pick_Ironing", getActivity());
-            String str_color_pick_for_manual_entry = SessionSave.getSession("Session_Color_Pick_Manual_Entry", getActivity());
+            String str_color_pick_for_manual_entry = SessionSave.getSession("Session_Color_Pick_Manual_Entry_For_Ironing", getActivity());
 
             String str_operator_id = SessionSave.getSession("Session_Onclick_id_value_For_Checking_Person_Ironing", getActivity());
             String str_opeartor_name = SessionSave.getSession("Session_Checking_Person_Ironing", getActivity());
@@ -833,8 +849,8 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
                             fab_for_ironing.setVisibility(View.VISIBLE);
                             rv_ironing.setVisibility(View.VISIBLE);
                         } else if (str_temp_entry_point.equals("2")) {
-                            SessionSave.clearSession("Session_IO_Number_Manual_Entry", getActivity());
-                            SessionSave.clearSession("Session_Color_Pick_Manual_Entry", getActivity());
+                            SessionSave.clearSession("Session_IO_Number_Manual_Entry_For_Ironing", getActivity());
+                            SessionSave.clearSession("Session_Color_Pick_Manual_Entry_For_Ironing", getActivity());
                             SessionSave.clearSession("Session_Checking_Person_Ironing", getActivity());
                             SessionSave.clearSession("Session_Shift_Timing_Ironing", getActivity());
                             SessionSave.clearSession("Session_Total_Pieces_Ironing", getActivity());
@@ -974,7 +990,7 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
             if (str_session_game_entry_point_value.equals("1")) {
                 str_io_number_local = SessionSave.getSession("Session_IO_Number_Ironing", getActivity());
             } else if (str_session_game_entry_point_value.equals("2")) {
-                str_io_number_local = SessionSave.getSession("Session_IO_Number_Manual_Entry", getActivity());
+                str_io_number_local = SessionSave.getSession("Session_IO_Number_Manual_Entry_For_Ironing", getActivity());
             }
 
             JSONObject jsonObject = new JSONObject();
@@ -1224,8 +1240,9 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
                 @Override
                 public void onClick(View v) {
                     tv_io_number_normal_txt.setText("");
+                    tv_onclick_io_number_txt.setText("");
 //                    Log.e("str_session_game_entry_point_value", str_session_game_entry_point_value);
-                    SessionSave.SaveSession("Session_IO_Number_Manual_Entry", holder.tv_io_number_pick.getText().toString(), getActivity());
+                    SessionSave.SaveSession("Session_IO_Number_Manual_Entry_For_Ironing", holder.tv_io_number_pick.getText().toString(), getActivity());
                     tv_onclick_io_number_txt.setText(holder.tv_io_number_pick.getText().toString());
                     dialog_for_io_number.dismiss();
                 }
@@ -1280,7 +1297,7 @@ public class Ironing_Entry_Frag extends Fragment implements View.OnClickListener
                 @Override
                 public void onClick(View v) {
                     tv_color_normal_txt.setText("");
-                    SessionSave.SaveSession("Session_Color_Pick_Manual_Entry", holder.tv_color_pick.getText().toString(), getActivity());
+                    SessionSave.SaveSession("Session_Color_Pick_Manual_Entry_For_Ironing", holder.tv_color_pick.getText().toString(), getActivity());
                     tv_onclick_color_txt.setText(holder.tv_color_pick.getText().toString());
                     dialog_for_colors.dismiss();
                 }
