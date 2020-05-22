@@ -79,7 +79,6 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     ActionBarDrawerToggle toggle;
     @SuppressLint("StaticFieldLeak")
     public static ImageView imageView_in_nav_header;
-
     SQLiteDatabase db;
     Dialog logout_dialog;
 
@@ -97,25 +96,11 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_main);
         db = Objects.requireNonNull(getApplicationContext()).openOrCreateDatabase("manjuexports.db", Context.MODE_PRIVATE, null);
         db.execSQL("create table if not exists LOGINDETAILS(USERNAME varchar,LOGINTOKEN int,STATUS int);");
-
-        /*String select = "select USERNAME from LOGINDETAILS where STATUS ='" + 1 + "'";
-        Cursor cursor = db.rawQuery(select, null);
-        if (cursor.moveToFirst()) {
-            do {
-                String str_username = "";
-                String str_username1 = "";
-                str_username = cursor.getString(0);
-                Log.e("str_usernamewww", str_username);
-                Log.e("str_username1", str_username1);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-//        DBEXPORT();*/
-
-        toolbar = findViewById(R.id.toolbar);
-        tv_title_txt = findViewById(R.id.tv_title_txt);
-        imageView_in_nav_header = findViewById(R.id.imageView_in_nav_header);
+        drawer = findViewById(R.id.drawer_layout);
         menuRight_icon = findViewById(R.id.menuRight);
+        tv_title_txt = findViewById(R.id.tv_title_txt);
+        toolbar = findViewById(R.id.toolbar);
+        imageView_in_nav_header = findViewById(R.id.imageView_in_nav_header);
         toolbar.setBackgroundColor(getResources().getColor(R.color.blue_color));
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -126,7 +111,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
-        drawer = findViewById(R.id.drawer_layout);
+
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -164,7 +149,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
     //here we maintain on back press ,all other activity controlled by this activity.
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {

@@ -3,6 +3,7 @@ package com.manju_exports.Model;
 public class Full_App_Model_Class {
     public String status;
     public String message;
+    public String warning;
     public Data data;
 
     public static class Data {

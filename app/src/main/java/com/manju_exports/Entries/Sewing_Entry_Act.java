@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -95,10 +96,40 @@ public class Sewing_Entry_Act extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Sewing_Entry_Act.this, Home_Activity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
+        if (Sewing_Frag.constraintLayout_recyclerview.getVisibility() == View.VISIBLE) {
+//            Toast.makeText(this, "bacckpresee act", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Sewing_Entry_Act.this, Home_Activity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        } else if (Sewing_Frag.scroll_view_layout.getVisibility() == View.VISIBLE || Sewing_Frag.constraintLayout_inside_io_number_color.getVisibility() == View.VISIBLE) {
+            final Dialog dialog = new Dialog(Sewing_Entry_Act.this);
+            dialog.setContentView(R.layout.exit_alert);
+            TextView tv_yes, tv_no;
+            Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.show();
+            tv_yes = dialog.findViewById(R.id.tv_yes);
+            tv_no = dialog.findViewById(R.id.tv_cancel);
+            tv_yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    Intent intent = new Intent(Sewing_Entry_Act.this, Sewing_Entry_Act.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+                    Sewing_Entry_Act.this.overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }
+            });
+            tv_no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+        }
     }
 
     @Override

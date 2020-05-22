@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -35,12 +36,17 @@ public class Sewing_Adapter extends RecyclerView.Adapter<Sewing_Adapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull Sewing_Adapter.ViewHolder holder, int position) {
-        holder.tv_operator_name.setText(dataArrayList.get(position).operator_name);
-        holder.tv_operator_id.setText(dataArrayList.get(position).operator_id);
         holder.tv_io_num.setText(dataArrayList.get(position).io_no);
-        holder.tv_operation_name.setText(dataArrayList.get(position).operation_id);
-        holder.tv_operation_id.setText(dataArrayList.get(position).operation_name);
+        holder.tv_operator_name.setText(dataArrayList.get(position).operator_name);
+        holder.tv_operation_name.setText(dataArrayList.get(position).operation_name);
         holder.tv_shift.setText(dataArrayList.get(position).shift_name);
+//        holder.tv_time.setText(dataArrayList.get(position).operator_id);
+        holder.tv_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "In Progress", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -50,17 +56,17 @@ public class Sewing_Adapter extends RecyclerView.Adapter<Sewing_Adapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_operator_name, tv_operator_id, tv_io_num, tv_operation_id, tv_operation_name, tv_shift;
+        TextView tv_io_num, tv_operator_name, tv_operation_name, tv_shift, tv_time, tv_edit;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tv_operator_name = itemView.findViewById(R.id.tv_operator_name);
-            tv_operator_id = itemView.findViewById(R.id.tv_operator_id);
             tv_io_num = itemView.findViewById(R.id.tv_io_num);
-            tv_operation_id = itemView.findViewById(R.id.tv_operation_id);
+            tv_operator_name = itemView.findViewById(R.id.tv_operator_name);
             tv_operation_name = itemView.findViewById(R.id.tv_operation_name);
             tv_shift = itemView.findViewById(R.id.tv_shift);
+            tv_time = itemView.findViewById(R.id.tv_time);
+            tv_edit = itemView.findViewById(R.id.tv_edit);
         }
     }
 }

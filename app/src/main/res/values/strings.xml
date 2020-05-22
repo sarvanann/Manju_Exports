@@ -78,4 +78,8 @@
 
     <string name="home_second">Home Second</string>
     <string name="qr_code_not_exist_txt">QR code doesn\'t exist.</string>
+    <string name="bundle_number_txt">Bundle No</string>
+    <string name="io_no_txt">IO No</string>
+    <string name="select_bundle_number_txt">Select Bundle Number</string>
+    <string name="warning_txt">Warning</string>
 </resources>

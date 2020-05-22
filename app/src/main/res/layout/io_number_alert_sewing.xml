@@ -37,7 +37,7 @@
             android:layout_marginBottom="8dp"
             android:orientation="vertical"
             android:scrollbarSize="3dp"
-            android:scrollbarThumbVertical="@drawable/recycler_view_side_thumbnails_for_checking"
+            android:scrollbarThumbVertical="@drawable/recycler_view_side_thumbnails_for_sewing"
             android:scrollbars="vertical"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -66,6 +66,10 @@ public interface APIInterface {
     @POST("get_production_color")
     Call<Operator_Model> COLOR_CODE_RESPONSE_CALL(@Header("content-type") String type, @Body String user);
 
+    //Tested==>15-05-2020
+    @POST("get_production_bundle")
+    Call<Operator_Model> BUNDLE_NUMBER̥_CODE_RESPONSE_CALL(@Header("content-type") String type, @Body String user);
+
     @POST("get_mistake")
     Call<Operator_Model> MISTAKE_RESPONSE_CALL(@Header("content-type") String type, @Body String user);
 

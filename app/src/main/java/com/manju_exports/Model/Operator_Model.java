@@ -18,6 +18,7 @@ public class Operator_Model {
         public String to_time;
         public String io_no;
         public String color_code;
+        public String bundle_no;
 
     }
 }
